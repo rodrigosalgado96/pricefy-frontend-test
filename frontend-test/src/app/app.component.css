@@ -1,0 +1,39 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+table {
+    width: 75%;
+    height: 75%;
+}
+
+.mat-row:nth-child(2n+1) {
+    background-color: #ccc;
+}
+
+.mat-column-gtin {
+    width: 32px;
+    border-right: 1px solid currentColor;
+    padding-right: 24px;
+    text-align: center;
+}
+
+.mat-column-description {
+    padding-left: 16px;
+    /* font-size: 20px; */
+}
+
+/*.mat-column-demo-weight {
+    font-style: italic;
+  }
+  
+  .mat-column-demo-symbol {
+    width: 32px;
+    text-align: center;
+    font-weight: bold;
+  } */
