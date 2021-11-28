@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PromotionComponent } from './promotion.component';
 import { TableComponent } from './table/table.component';
+import { MatTableModule } from '@angular/material/table';
 
 
 
@@ -11,7 +12,8 @@ import { TableComponent } from './table/table.component';
     TableComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatTableModule
   ]
 })
 export class PromotionModule { }
