@@ -3,37 +3,31 @@
     height: 100vh;
 
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+
+    margin: 0px;
+    padding: 0px;
+
+    overflow: hidden;
 }
 
-table {
-    width: 75%;
-    height: 75%;
+.top,
+.bottom {
+    width: 100%;
+    height: 10%;
+
+    margin: 0px;
+    padding: 0px;
+
+    overflow: hidden;
 }
 
-.mat-row:nth-child(2n+1) {
-    background-color: #ccc;
-}
+.middle {
+    width: 100%;
+    height: 80%;
 
-.mat-column-gtin {
-    width: 32px;
-    border-right: 1px solid currentColor;
-    padding-right: 24px;
-    text-align: center;
-}
+    margin: 0px;
+    padding: 0px;
 
-.mat-column-description {
-    padding-left: 16px;
-    /* font-size: 20px; */
+    overflow: hidden;
 }
-
-/*.mat-column-demo-weight {
-    font-style: italic;
-  }
-  
-  .mat-column-demo-symbol {
-    width: 32px;
-    text-align: center;
-    font-weight: bold;
-  } */
