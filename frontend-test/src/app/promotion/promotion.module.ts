@@ -1,19 +1,29 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { PromotionComponent } from './promotion.component';
-import { TableComponent } from './table/table.component';
-import { MatTableModule } from '@angular/material/table';
+import { TableModule } from '../shared/components/table/table.module';
+import { AddFormComponent } from './add-form/add-form.component';
+import { EditFormComponent } from './edit-form/edit-form.component';
+import { DeleteFormComponent } from './delete-form/delete-form.component';
+import { FormInputModule } from '../shared/components/form-input/form-input.module';
 
 
 
 @NgModule({
   declarations: [
     PromotionComponent,
-    TableComponent
+    AddFormComponent,
+    EditFormComponent,
+    DeleteFormComponent
   ],
   imports: [
     CommonModule,
-    MatTableModule
+    TableModule,
+    FormsModule,
+    ReactiveFormsModule,
+    FormInputModule
   ]
 })
 export class PromotionModule { }

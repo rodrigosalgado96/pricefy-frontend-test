@@ -8,7 +8,8 @@ import { Promotion } from '../shared/models/promotion.model';
 })
 export class PromotionComponent implements OnInit {
 
-
+  addMode: boolean = false;
+  editMode: boolean = false;
 
   data: Promotion[] = [
     { GTIN: '001', description: 'aaa', category: 'aaa', regularPrice: 123, promotionalPrice: 123, startDate: '10/03/96', endDate: '10/03/21' },
@@ -27,6 +28,20 @@ export class PromotionComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
+  }
+
+  showEditForm(){
+    this.editMode = !this.editMode;
+  }
+
+  showAddForm(){
+    this.addMode = !this.addMode;
+  }
+
+  showTable(){
+    this.addMode = false;
+    this.editMode = false;
   }
 }
 
