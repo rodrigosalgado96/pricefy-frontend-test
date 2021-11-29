@@ -12,15 +12,21 @@ body {
 /**********************MAIN****************************/
 :root {
     --primary-color: rgb(246,246,246);
+    --secondary-color: rgb(103, 78, 167);
     
     --primary-font-color: rgb(24, 194, 156);
     --secondary-font-color: rgb(103, 78, 167);
 }
 
 /**********************FEATURES****************************/
-app-promotion {
+app-promotion, app-add-form, app-edit-form {
     width: 100%;
     height: 100%;
+}
+.form{
+    width: 100%;
+    height: 100%;
+
 }
 
 /**********************CORE*************************/
@@ -29,3 +35,59 @@ app-footer {
     width: 100%;
     height: 100%;
 }
+
+/**********************SHARED-COMPONENTS*************************/
+main-table {
+    width: 100%;
+    height: 100%;
+}
+
+/*************FORM-INPUTS**********************************/
+
+.form-input {
+    display: flex;
+    align-items: center;
+} 
+.form-input label {
+    z-index: 1;
+}
+.form-input label span {
+    width: 200px;
+    height: 20px;
+    background-color: var(--secondary-color);
+    margin-top: 5px;
+    margin-bottom: 0px;
+    padding: 2px 2px 2px 4px;
+
+    display: flex;
+    align-items: center;
+
+    color: var(--primary-font-color);
+    font-family: Arial;
+    font-size: 12px;
+    font-weight: bold;
+
+    border: none;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    box-sizing: border-box;
+
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.64);
+}
+.form-input  label input {
+    width: 200px;
+    height: 25px;
+
+    color: lightslategray;
+    font-family: Arial;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    padding: 2px;
+
+    border: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-sizing: border-box;
+
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.64);
+} 
