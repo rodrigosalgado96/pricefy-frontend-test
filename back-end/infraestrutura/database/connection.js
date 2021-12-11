@@ -4,8 +4,8 @@ const connection = mysql.createConnection({
     host: 'localhost',
     port: 3306,
     user: 'root',
-    password: 'naosei74100',
-    database: 'agenda-petshop'
+    password: 'admin',
+    database: 'pricefy'
 })
 
 module.exports = connection
