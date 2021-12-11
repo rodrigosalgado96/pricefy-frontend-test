@@ -1,0 +1,133 @@
+form {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .form-header {
+        width: 100%;
+        height: 15%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .form-header p {
+        color: var(--primary-font-color);
+        font-size: 28px;
+        margin: 0px;
+    }
+
+    .form-body {
+        width: 100%;
+        height: 70%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .error{
+            align-self: flex-start;
+            color: red;
+            font-size: 0.8em;
+            margin-left: 15%;
+        }
+
+        .full-width {
+            width: 100% !important;
+        }
+
+        .description-row {
+            width: 70%;
+            height: 25%;
+
+            margin-bottom: 0.5em;
+
+            mat-form-field {
+                width: 100%;
+            }
+        }
+
+        .price-row,
+        .date-row,
+        .category-row {
+            width: 70%;
+            height: 20%;
+            display: flex;
+            justify-content: space-between;
+
+            * {
+                width: 40%;
+                height: 60%;
+                margin-top: 1%;
+            }
+
+            .align-end {
+                text-align: end;
+            }
+        }
+
+        .category-row {
+            .mat-button-toggle-group {
+                border: 1px solid var(--primary-font-color);
+                border-radius: 30px;
+
+                .mat-button-toggle {
+                    border-right: 1px solid var(--primary-font-color);
+                    color: var(--primary-font-color);
+                    font-weight: 500;
+                }
+
+                :last-child {
+                    border: none;
+                }
+
+                .mat-button-toggle-checked {
+                    background-color: var(--secondary-font-color);
+                }
+            }
+        }
+
+        ::ng-deep .mat-focused .mat-form-field-label,
+        ::ng-deep.mat-form-field-infix,
+        ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline,
+        ::ng-deep .mat-input-element,
+        mat-label,
+        .tip {
+            color: var(--primary-font-color) !important;
+        }
+
+        .hint,
+        .value-color,
+        ::ng-deep .mat-select-value-text {
+            color: var(--secondary-font-color) !important;
+        }
+
+        ::ng-deep.mat-form-field-ripple {
+            /*change color of underline when focused*/
+            background-color: var(--primary-font-color) !important;
+        }
+
+        textarea {
+            resize: none;
+        }
+    }
+
+    .form-body .row *,
+    .form-footer * {
+        margin-right: 2%;
+    }
+
+    .form-footer {
+        width: 100%;
+        height: 10%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

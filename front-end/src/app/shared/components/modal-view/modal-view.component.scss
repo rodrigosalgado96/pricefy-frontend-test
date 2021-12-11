@@ -1,0 +1,42 @@
+.modal-focus {
+  background: rgba(0, 0, 0, 0.4);
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content-in {
+  background: var(--primary-color);
+  border: 3px solid var(--primary-font-color);
+  border-radius: 0.3rem;
+  position: relative;
+}
+
+.button-close {
+  font: 13.3333px helvetica-lt-std-light;
+  width: 48px;
+  height: 48px;
+  border: none;
+  background: transparent;
+  position: absolute;
+  right: 0;
+}
+
+.span-close {
+  color: var(--secondary-font-color);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.span-close:hover {
+  opacity: 0.75;
+}

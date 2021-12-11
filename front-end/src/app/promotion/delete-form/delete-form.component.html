@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="header">
+    <p>Deletar Promoção</p>
+  </div>
+  <div class="body">
+    <p>Deseja mesmo deletar esta promoção Promoção:</p>
+    <p>
+      GTIN:
+      <span>
+        {{ promotion.GTIN }}
+      </span>
+    </p>
+    <p>
+      Categoria:
+      <span>
+        {{ promotion.category }}
+      </span>
+    </p>
+  </div>
+  <div class="bottom">
+    <button type="button" (click)="cancel()" class="main-button">
+      Cancelar
+    </button>
+    <button type="button" (click)="confirm()" class="main-button">
+      Deletar
+    </button>
+  </div>
+</div>

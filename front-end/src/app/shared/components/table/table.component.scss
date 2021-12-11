@@ -1,0 +1,69 @@
+table {
+    width: 100%;
+    height: 100%;
+    overflow-x: auto;
+    border: #ccc;
+}
+
+mat-table{
+    width: 100%;
+}
+
+.mat-row:nth-child(odd) {
+    background-color: #ccc;
+}
+
+.mat-header-cell {
+    color: var(--primary-font-color);
+    text-align: center;
+    
+    ::ng-deep .mat-sort-header-container{
+        justify-content: center;
+    }
+}
+
+th.cdk-column-startDate, th.cdk-column-endDate {
+    cursor: pointer;
+}
+
+.mat-cell{
+    width: 10%;
+    text-align: center;
+    border-right: 1px solid var(--primary-font-color);
+}
+
+.mat-cell:last-child{
+    border: none;
+}
+
+.mat-column-gtin {
+    width: 12%;
+    padding-right: 24px;    
+}
+
+.mat-column-description {
+    padding-left: 16px;
+    width: 30%;
+    white-space: pre-wrap;
+    text-align: left;
+}
+
+.mat-column-actions {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 !important;
+}
+
+.action-button {
+    cursor: pointer;
+    width: 20px;
+    filter: invert(53%) sepia(93%) saturate(387%) hue-rotate(117deg) brightness(98%) contrast(89%);
+}
+
+.expired{
+    background-color: rgba(255,0,0, 0.5);
+    font-weight: bold;
+}

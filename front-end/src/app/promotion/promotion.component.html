@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="table-side">
+        <main-table class="table" [data]="data" [config]="displayedColumns" (action)="tableEvent($event)"></main-table>
+    </div>
+    <div class="buttons-side">
+        <button (click)="refreshData()" class="main-button">Atualizar</button>
+        <button (click)="showAddForm()" class="main-button">Adicionar</button>
+    </div>
+</div>
+
+<app-modal-view
+    width="60%"
+    height="60%"
+    (closeModal)="showAddForm()"
+    *ngIf="addModal"
+>
+    <app-add-form (exitForm)="showAddForm()"></app-add-form>
+</app-modal-view>
+
+<app-modal-view
+    width="60%"
+    height="60%"
+    (closeModal)="showEditForm()"
+    *ngIf="editModal"
+>
+    <app-edit-form (exitForm)="showEditForm()"  [promotion]="selectedPromotion"></app-edit-form>
+</app-modal-view>
+
+<app-modal-view
+    width="40%"
+    height="40%"
+    (closeModal)="showDeleteModal()"
+    *ngIf="deleteModal"
+>
+    <app-delete-form (exitForm)="showDeleteModal()"  [promotion]="selectedPromotion"></app-delete-form>
+</app-modal-view>
+<ngx-spinner></ngx-spinner>

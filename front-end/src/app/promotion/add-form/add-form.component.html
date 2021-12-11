@@ -1,0 +1,123 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div class="form-header">
+    <p>Adicionar Promoção</p>
+  </div>
+  <div class="form-body">
+    <div class="category-row">
+      <mat-form-field appearance="outline">
+        <mat-label>GTIN</mat-label>
+        <input
+          matInput
+          #gtin
+          type="number"
+          class="full-width value-color"
+          formControlName="gtin"
+          maxlength="10"
+        />
+        <mat-hint align="end" class="hint align-end"
+          >{{ gtin.value?.length || 0 }}/14</mat-hint
+        >
+        <mat-error *ngIf="gtinField?.errors?.['wrongLength']">
+          Deve possuir 14 caracteres
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Categoria</mat-label>
+        <mat-select class="full-width value-color" formControlName="category">
+          <mat-option
+            *ngFor="let item of categoryOptions"
+            [value]="item"
+            class="value-color"
+            >{{ item }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="price-row">
+      <mat-form-field appearance="outline">
+        <mat-label>Preço Promocional</mat-label>
+        <span matPrefix class="value-color">R$ &nbsp;</span>
+        <input
+          matInput
+          type="number"
+          [value]="form.controls['promotionalPrice'].value | number"
+          class="full-width value-color"
+          formControlName="promotionalPrice"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Preço Regular</mat-label>
+        <span matPrefix class="value-color">R$ &nbsp;</span>
+        <input
+          matInput
+          type="number"
+          [value]="form.controls['regularPrice'].value | number"
+          class="full-width value-color"
+          formControlName="regularPrice"
+        />
+      </mat-form-field>
+    </div>
+    <span class='error' *ngIf="form.errors?.['invalidDate']">
+      *A Data Final deve ser maior que a Data Inicial
+    </span>
+    <div class="date-row">
+      <mat-form-field appearance="outline">
+        <mat-label>Data de Inicio</mat-label>
+        <input
+          matInput
+          [matDatepicker]="startDate"
+          class="value-color"
+          formControlName="startDate"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="startDate"
+          class="value-color"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #startDate></mat-datepicker>
+        <mat-error
+          *ngIf="form.controls['startDate'].errors?.['isDateInconsistent']"
+        >
+          Data Inválida
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Data Final</mat-label>
+        <input
+          matInput
+          [matDatepicker]="endDate"
+          class="value-color"
+          formControlName="endDate"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="endDate"
+          class="value-color"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #endDate></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="description-row">
+      <mat-form-field appearance="outline">
+        <mat-label>Descrição</mat-label>
+        <textarea
+          matInput
+          #description
+          maxlength="100"
+          formControlName="description"
+          class="value-color"
+        ></textarea>
+        <mat-hint align="end" class="hint"
+          >Caracteres Restantes:
+          {{ description.value?.length || 0 }}/100</mat-hint
+        >
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="form-footer">
+    <button type="button" (click)="cancel()" class="main-button">
+      Cancelar
+    </button>
+    <button type="submit" class="main-button">Adicionar</button>
+  </div>
+</form>
