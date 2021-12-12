@@ -10,7 +10,7 @@ import {
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
-import { Promotion } from '../../models/promotion.model';
+import { Sales } from '../../shared/models/sale.model';
 
 @Component({
   selector: 'main-table',
@@ -18,7 +18,7 @@ import { Promotion } from '../../models/promotion.model';
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit, AfterViewInit {
-  @Input() data!: Promotion[];
+  @Input() data!: Sales[];
   @Input() config: any;
   @Output() action = new EventEmitter();
 
@@ -37,8 +37,8 @@ export class TableComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
-  emit(promotion: Promotion, action: string) {
-    this.action.emit([promotion, action]);
+  emit(sale: Sales, action: string) {
+    this.action.emit([sale, action]);
   }
 
   checkDate(date: string): boolean {

@@ -7,9 +7,9 @@ import {
   dateBeforeToday,
   datesValidator,
 } from 'src/app/shared/validators/date.validator';
-import { PromotionCommunicationService } from '../service/promotion.communication.service';
-import { PromotionService } from '../service/promotion.service';
-import { numberLengthValidator } from '../service/promotion.validator.service';
+import { SalesCommunicationService } from '../service/sales.communication.service';
+import { SalesService } from '../service/sales.service';
+import { numberLengthValidator } from '../service/sales.validator.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
@@ -24,8 +24,8 @@ export class AddFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private promotionService: PromotionService,
-    private refreshPromotion: PromotionCommunicationService,
+    private salesService: SalesService,
+    private refreshSales: SalesCommunicationService,
     private spinner: NgxSpinnerService
   ) {}
 
@@ -75,12 +75,12 @@ export class AddFormComponent implements OnInit {
 
     if (this.form.valid) {
       this.spinner.show();
-      this.promotionService
-        .addPromotion(form)
-        .pipe(switchMap(() => this.promotionService.getAllPromotions()))
+      this.salesService
+        .addSale(form)
+        .pipe(switchMap(() => this.salesService.getAllSales()))
         .pipe(finalize(() => this.spinner.hide()))
         .subscribe((data) =>
-          this.refreshPromotion.emitPromotions(data)
+          this.refreshSales.emitSales(data)
         );
       this.exitForm.emit();
     }

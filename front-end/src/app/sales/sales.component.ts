@@ -2,19 +2,19 @@ import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { finalize, Subscription } from 'rxjs';
 
-import { Promotion } from '../shared/models/promotion.model';
-import { PromotionService } from './service/promotion.service';
-import { PromotionCommunicationService } from './service/promotion.communication.service';
+import { Sales } from '../shared/models/sale.model';
+import { SalesService } from './service/sales.service';
+import { SalesCommunicationService } from './service/sales.communication.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
-  selector: 'app-promotion',
-  templateUrl: './promotion.component.html',
-  styleUrls: ['./promotion.component.css'],
+  selector: 'app-sales',
+  templateUrl: './sales.component.html',
+  styleUrls: ['./sales.component.scss'],
 })
-export class PromotionComponent implements OnInit, OnDestroy {
-  data!: Promotion[];
-  refreshPromotionSub!: Subscription;
+export class SalesComponent implements OnInit, OnDestroy {
+  data!: Sales[];
+  refreshSalesSub!: Subscription;
 
   displayedColumns: string[] = [
     'gtin',
@@ -27,7 +27,7 @@ export class PromotionComponent implements OnInit, OnDestroy {
     'actions',
   ];
 
-  selectedPromotion!: Promotion;
+  selectedSales!: Sales;
   addModal: boolean = false;
   editModal: boolean = false;
   deleteModal: boolean = false;
@@ -35,23 +35,23 @@ export class PromotionComponent implements OnInit, OnDestroy {
   constructor(
     private activatedRoute: ActivatedRoute,
     private changeDetectorRefs: ChangeDetectorRef,
-    private promotionService: PromotionService,
-    private promotionCommunicationService: PromotionCommunicationService,
+    private salesService: SalesService,
+    private salesCommunicationService: SalesCommunicationService,
     private spinner: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
-    this.data = this.activatedRoute.snapshot.data['promotionData'];
+    this.data = this.activatedRoute.snapshot.data['salesData'];
     this.communicationRefresh();
   }
 
   ngOnDestroy(): void {
-    this.refreshPromotionSub.unsubscribe();
+    this.refreshSalesSub.unsubscribe();
   }
 
   communicationRefresh() {
-    this.refreshPromotionSub =
-      this.promotionCommunicationService.refreshSPromotionSource$.subscribe(
+    this.refreshSalesSub =
+      this.salesCommunicationService.refreshSalesSource$.subscribe(
         (data) => {
           this.data = data;
           this.changeDetectorRefs.detectChanges();
@@ -61,8 +61,8 @@ export class PromotionComponent implements OnInit, OnDestroy {
 
   refreshData() {
     this.spinner.show();
-    this.promotionService
-      .getAllPromotions()
+    this.salesService
+      .getAllSales()
       .pipe(finalize(() => this.spinner.hide()))
       .subscribe((data) => (this.data = data));
   }
@@ -80,7 +80,7 @@ export class PromotionComponent implements OnInit, OnDestroy {
   }
 
   tableEvent(event: any) {
-    this.selectedPromotion = event[0];
+    this.selectedSales = event[0];
     if (event[1] === 'edit') this.showEditForm();
     if (event[1] === 'delete') this.showDeleteModal();
   }

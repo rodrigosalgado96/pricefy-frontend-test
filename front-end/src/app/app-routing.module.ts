@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { PromotionComponent } from './promotion/promotion.component';
-import { PromotionResolver } from './promotion/service/promotion.resolver';
+import { SalesComponent } from './sales/sales.component';
+import { SalesResolver } from './sales/service/sales.resolver';
 
 const routes: Routes = [
-  { path: "", pathMatch: "full", redirectTo: "promotion" },
+  { path: "", pathMatch: "full", redirectTo: "sales" },
   {
-    path: "promotion",
-    component: PromotionComponent,
+    path: "sales",
+    component: SalesComponent,
     resolve: {
-      promotionData: PromotionResolver
+      salesData: SalesResolver
     }
   },
 ];

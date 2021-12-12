@@ -1,4 +1,4 @@
-const repository = require('../repositories/promotion')
+const repository = require('../repositories/sales')
 
 class Promotion {
   add(promotion, res) {

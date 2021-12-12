@@ -3,14 +3,14 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { finalize, switchMap } from 'rxjs';
 import * as moment from 'moment';
 
-import { Promotion } from 'src/app/shared/models/promotion.model';
+import { Sales } from 'src/app/shared/models/sale.model';
 import {
   dateBeforeToday,
   datesValidator,
 } from 'src/app/shared/validators/date.validator';
-import { PromotionCommunicationService } from '../service/promotion.communication.service';
-import { PromotionService } from '../service/promotion.service';
-import { numberLengthValidator } from '../service/promotion.validator.service';
+import { SalesCommunicationService } from '../service/sales.communication.service';
+import { SalesService } from '../service/sales.service';
+import { numberLengthValidator } from '../service/sales.validator.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
@@ -20,7 +20,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class EditFormComponent implements OnInit {
   @Output() exitForm = new EventEmitter();
-  @Input() promotion!: Promotion;
+  @Input() sale!: Sales;
   form!: FormGroup;
   categoryOptions: string[] = ['ELETRONICOS', 'BEBIDAS', 'COMIDAS', 'OUTROS'];
 
@@ -28,8 +28,8 @@ export class EditFormComponent implements OnInit {
 
   constructor(
     public formBuilder: FormBuilder,
-    private promotionService: PromotionService,
-    private refreshPromotion: PromotionCommunicationService,
+    private salesService: SalesService,
+    private refreshSales: SalesCommunicationService,
     private spinner: NgxSpinnerService
   ) {}
 
@@ -37,22 +37,22 @@ export class EditFormComponent implements OnInit {
     this.form = this.formBuilder.group(
       {
         gtin: [
-          this.promotion.gtin,
+          this.sale.gtin,
           [Validators.required, numberLengthValidator],
         ],
-        description: [this.promotion.description, Validators.required],
-        category: [this.promotion.category, Validators.required],
-        regularPrice: [this.promotion.regularPrice, Validators.required],
+        description: [this.sale.description, Validators.required],
+        category: [this.sale.category, Validators.required],
+        regularPrice: [this.sale.regularPrice, Validators.required],
         promotionalPrice: [
-          this.promotion.promotionalPrice,
+          this.sale.promotionalPrice,
           Validators.required,
         ],
         startDate: {
-          value: moment(this.promotion.startDate, 'DD/MM/YYYY', true).format(),
-          disabled: this.checkStartDate(this.promotion.startDate),
+          value: moment(this.sale.startDate, 'DD/MM/YYYY', true).format(),
+          disabled: this.checkStartDate(this.sale.startDate),
         },
         endDate: [
-          moment(this.promotion.endDate, 'DD/MM/YYYY', true).format(),
+          moment(this.sale.endDate, 'DD/MM/YYYY', true).format(),
           Validators.required,
         ],
       },
@@ -107,11 +107,11 @@ export class EditFormComponent implements OnInit {
 
     if (this.form.valid) {
       this.spinner.show();
-      this.promotionService
-        .editPromotion(this.promotion.id, form)
-        .pipe(switchMap(() => this.promotionService.getAllPromotions()))
+      this.salesService
+        .editSale(this.sale.id, form)
+        .pipe(switchMap(() => this.salesService.getAllSales()))
         .pipe(finalize(() => this.spinner.hide()))
-        .subscribe((data) => this.refreshPromotion.emitPromotions(data));
+        .subscribe((data) => this.refreshSales.emitSales(data));
       this.exitForm.emit();
     }
   }

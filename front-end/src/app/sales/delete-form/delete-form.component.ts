@@ -2,9 +2,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { finalize, switchMap } from 'rxjs';
 
-import { Promotion } from 'src/app/shared/models/promotion.model';
-import { PromotionCommunicationService } from '../service/promotion.communication.service';
-import { PromotionService } from '../service/promotion.service';
+import { Sales } from 'src/app/shared/models/sale.model';
+import { SalesCommunicationService } from '../service/sales.communication.service';
+import { SalesService } from '../service/sales.service';
 
 @Component({
   selector: 'app-delete-form',
@@ -13,11 +13,11 @@ import { PromotionService } from '../service/promotion.service';
 })
 export class DeleteFormComponent {
   @Output() exitForm = new EventEmitter();
-  @Input() promotion!: Promotion;
+  @Input() sale!: Sales;
 
   constructor(
-    private promotionService: PromotionService,
-    private refreshPromotion: PromotionCommunicationService,
+    private salesService: SalesService,
+    private refreshSales: SalesCommunicationService,
     private spinner: NgxSpinnerService
   ) {}
 
@@ -27,11 +27,11 @@ export class DeleteFormComponent {
 
   confirm() {
     this.spinner.show();
-    this.promotionService
-      .deletePromotion(this.promotion.id)
-      .pipe(switchMap(() => this.promotionService.getAllPromotions()))
+    this.salesService
+      .deleteSale(this.sale.id)
+      .pipe(switchMap(() => this.salesService.getAllSales()))
       .pipe(finalize(() => this.spinner.hide()))
-      .subscribe((data) => this.refreshPromotion.emitPromotions(data));
+      .subscribe((data) => this.refreshSales.emitSales(data));
     this.exitForm.emit();
   }
 }

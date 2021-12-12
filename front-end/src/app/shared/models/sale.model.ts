@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Adapter } from "src/app/core/adapter";
 
-export class Promotion {
+export class Sales {
   constructor(
     public id: number,
     public gtin: string,
@@ -17,8 +17,8 @@ export class Promotion {
 @Injectable({
   providedIn: 'root',
 })
-export class PromotionAdapter implements Adapter<Promotion> {
-  adapt(item: any): Promotion {
+export class SalesAdapter implements Adapter<Sales> {
+  adapt(item: any): Sales {
     const promotions = { ...item };
     return promotions;
   }
