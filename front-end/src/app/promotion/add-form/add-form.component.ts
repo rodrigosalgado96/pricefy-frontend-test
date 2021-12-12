@@ -80,7 +80,7 @@ export class AddFormComponent implements OnInit {
         .pipe(switchMap(() => this.promotionService.getAllPromotions()))
         .pipe(finalize(() => this.spinner.hide()))
         .subscribe((data) =>
-          this.refreshPromotion.emmitRefreshSpecialDay(data)
+          this.refreshPromotion.emitPromotions(data)
         );
       this.exitForm.emit();
     }

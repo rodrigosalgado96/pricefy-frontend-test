@@ -31,7 +31,7 @@ export class DeleteFormComponent {
       .deletePromotion(this.promotion.id)
       .pipe(switchMap(() => this.promotionService.getAllPromotions()))
       .pipe(finalize(() => this.spinner.hide()))
-      .subscribe((data) => this.refreshPromotion.emmitRefreshSpecialDay(data));
+      .subscribe((data) => this.refreshPromotion.emitPromotions(data));
     this.exitForm.emit();
   }
 }

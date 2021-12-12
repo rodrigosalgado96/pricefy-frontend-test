@@ -15,7 +15,7 @@ export const datesValidator: ValidatorFn = (form: AbstractControl) => {
   const end = new Date(form.get('endDate')?.value);
 
   if (start != null && end != null) {
-    return start < end ? { invalidDate: false } : { invalidDate: true };
+    return start < end ? null : { invalidDate: true };
   }
-  return { invalidDate: false };
+  return null
 };

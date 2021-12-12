@@ -34,6 +34,17 @@
       </mat-form-field>
     </div>
     <div class="price-row">
+            <mat-form-field appearance="outline">
+        <mat-label>Preço Regular</mat-label>
+        <span matPrefix class="value-color">R$ &nbsp;</span>
+        <input
+          matInput
+          type="number"
+          [value]="form.controls['regularPrice'].value | number"
+          class="full-width value-color"
+          formControlName="regularPrice"
+        />
+      </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Preço Promocional</mat-label>
         <span matPrefix class="value-color">R$ &nbsp;</span>
@@ -43,17 +54,6 @@
           [value]="form.controls['promotionalPrice'].value | number"
           class="full-width value-color"
           formControlName="promotionalPrice"
-        />
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Preço Regular</mat-label>
-        <span matPrefix class="value-color">R$ &nbsp;</span>
-        <input
-          matInput
-          type="number"
-          [value]="form.controls['regularPrice'].value | number"
-          class="full-width value-color"
-          formControlName="regularPrice"
         />
       </mat-form-field>
     </div>

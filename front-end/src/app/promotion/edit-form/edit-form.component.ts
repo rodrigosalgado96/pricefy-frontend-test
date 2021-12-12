@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { finalize, switchMap } from 'rxjs';
-import * as moment from 'moment'
+import * as moment from 'moment';
 
 import { Promotion } from 'src/app/shared/models/promotion.model';
 import {
@@ -37,7 +37,7 @@ export class EditFormComponent implements OnInit {
     this.form = this.formBuilder.group(
       {
         gtin: [
-          this.promotion.GTIN,
+          this.promotion.gtin,
           [Validators.required, numberLengthValidator],
         ],
         description: [this.promotion.description, Validators.required],
@@ -48,10 +48,13 @@ export class EditFormComponent implements OnInit {
           Validators.required,
         ],
         startDate: {
-          value: moment(this.promotion.startDate, "DD/MM/YYYY", true).format(),
+          value: moment(this.promotion.startDate, 'DD/MM/YYYY', true).format(),
           disabled: this.checkStartDate(this.promotion.startDate),
         },
-        endDate: [moment(this.promotion.endDate, "DD/MM/YYYY", true).format(), Validators.required],
+        endDate: [
+          moment(this.promotion.endDate, 'DD/MM/YYYY', true).format(),
+          Validators.required,
+        ],
       },
       {
         updateOn: 'submit',
@@ -99,8 +102,8 @@ export class EditFormComponent implements OnInit {
   submit() {
     const form = this.form!.value;
 
-    form.startDate = moment(form.startDate).format("DD/MM/YYYY");
-    form.endDate = moment(form.endDate).format("DD/MM/YYYY");
+    form.startDate = moment(form.startDate).format('DD/MM/YYYY');
+    form.endDate = moment(form.endDate).format('DD/MM/YYYY');
 
     if (this.form.valid) {
       this.spinner.show();
@@ -108,9 +111,7 @@ export class EditFormComponent implements OnInit {
         .editPromotion(this.promotion.id, form)
         .pipe(switchMap(() => this.promotionService.getAllPromotions()))
         .pipe(finalize(() => this.spinner.hide()))
-        .subscribe((data) =>
-          this.refreshPromotion.emmitRefreshSpecialDay(data)
-        );
+        .subscribe((data) => this.refreshPromotion.emitPromotions(data));
       this.exitForm.emit();
     }
   }

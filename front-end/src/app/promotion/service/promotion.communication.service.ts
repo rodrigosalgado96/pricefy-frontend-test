@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { Promotion } from 'src/app/shared/models/promotion.model';
 
 @Injectable({ providedIn: 'root' })
 export class PromotionCommunicationService {
@@ -7,7 +8,7 @@ export class PromotionCommunicationService {
 
   refreshSPromotionSource$ = this.refreshSPromotionSource.asObservable();
 
-  emmitRefreshSpecialDay(promotion: any) {
+  emitPromotions(promotion: Promotion[]) {
     this.refreshSPromotionSource.next(promotion);
   }
 }

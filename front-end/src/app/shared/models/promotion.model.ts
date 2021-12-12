@@ -4,7 +4,7 @@ import { Adapter } from "src/app/core/adapter";
 export class Promotion {
   constructor(
     public id: number,
-    public GTIN: string,
+    public gtin: string,
     public description: string,
     public category: string,
     public regularPrice: number,

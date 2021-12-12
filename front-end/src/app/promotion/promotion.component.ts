@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { finalize, Subscription } from 'rxjs';
 
@@ -34,6 +34,7 @@ export class PromotionComponent implements OnInit, OnDestroy {
 
   constructor(
     private activatedRoute: ActivatedRoute,
+    private changeDetectorRefs: ChangeDetectorRef,
     private promotionService: PromotionService,
     private promotionCommunicationService: PromotionCommunicationService,
     private spinner: NgxSpinnerService
@@ -41,14 +42,21 @@ export class PromotionComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.data = this.activatedRoute.snapshot.data['promotionData'];
-    this.refreshPromotionSub =
-      this.promotionCommunicationService.refreshSPromotionSource$.subscribe(
-        (data) => (this.data = data)
-      );
+    this.communicationRefresh();
   }
 
   ngOnDestroy(): void {
     this.refreshPromotionSub.unsubscribe();
+  }
+
+  communicationRefresh() {
+    this.refreshPromotionSub =
+      this.promotionCommunicationService.refreshSPromotionSource$.subscribe(
+        (data) => {
+          this.data = data;
+          this.changeDetectorRefs.detectChanges();
+        }
+      );
   }
 
   refreshData() {
@@ -69,11 +77,6 @@ export class PromotionComponent implements OnInit, OnDestroy {
 
   showDeleteModal() {
     this.deleteModal = !this.deleteModal;
-  }
-
-  showTable() {
-    this.addModal = false;
-    this.editModal = false;
   }
 
   tableEvent(event: any) {
