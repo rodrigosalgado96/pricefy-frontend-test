@@ -1,12 +1,12 @@
-const Promotion = require('../models/promotion')
+const Promotion = require('../models/sales')
 
 module.exports = app => {
-    app.get('/promotions', (req, res) => {
+    app.get('/sales', (req, res) => {
         Promotion.get()
             .then(data => res.json(data))
             .catch(errors => res.status(400).json(errors))
     })
-    app.get('/promotions/:id', (req, res) => {
+    app.get('/sales/:id', (req, res) => {
         const id = parseInt(req.params.id)
 
         Promotion.getById(id)
@@ -14,7 +14,7 @@ module.exports = app => {
             .catch(errors => res.status(400).json(errors))
     })
 
-    app.post('/promotions', (req, res) => {
+    app.post('/sales', (req, res) => {
         const promotion = req.body
 
         Promotion.add(promotion)
@@ -26,7 +26,7 @@ module.exports = app => {
             )
     })
 
-    app.patch('/promotions/:id', (req, res) => {
+    app.patch('/sales/:id', (req, res) => {
         const id = parseInt(req.params.id)
         const promotion = req.body
 
@@ -37,7 +37,7 @@ module.exports = app => {
             .catch(errors => res.status(400).json(errors))
     })
 
-    app.delete('/promotions/:id', (req, res) => {
+    app.delete('/sales/:id', (req, res) => {
         const id = parseInt(req.params.id)
 
         Promotion.delete(id)
