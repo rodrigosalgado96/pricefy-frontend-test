@@ -5,10 +5,11 @@ const cors = require('cors')
 module.exports = () => {
  const app = express()
 //  const options = cors.options = {
-//    origin: 'http://localhost:4200'
+//    origin: '*'
 //  }
 
 //  app.use(cors(options))
+
  app.use(express.json())
  app.use(express.urlencoded({ extended: true }))
 

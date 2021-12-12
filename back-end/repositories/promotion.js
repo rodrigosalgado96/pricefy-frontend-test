@@ -1,4 +1,4 @@
-const query = require('../infraestrutura/database/queries')
+const query = require('../infrastructure/database/queries')
 
 class Promotion{
     add(atendimento){
