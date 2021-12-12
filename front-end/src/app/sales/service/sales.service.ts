@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable, of } from 'rxjs';
 
-import { Promotion, PromotionAdapter } from 'src/app/shared/models/promotion.model';
+import { Sales, SalesAdapter } from 'src/app/shared/models/sale.model';
 
-const data: Promotion[] = [
+const data: Sales[] = [
   { id: 1, gtin: '01234567890456', description: 'description', category: 'ELETRONICOS', regularPrice: 120, promotionalPrice: 129, startDate: '10/12/2021', endDate: '15/12/2022' },
   { id: 2, gtin: '01234567890165', description: 'description', category: 'COMIDAS', regularPrice: 15, promotionalPrice: 30, startDate: '10/03/2021', endDate: '15/12/2022' },
   { id: 3, gtin: '01234567890148', description: 'description', category: 'ELETRONICOS', regularPrice: 50, promotionalPrice: 80, startDate: '10/03/2021', endDate: '15/12/2022' },
@@ -16,33 +16,33 @@ const data: Promotion[] = [
   { id: 9, gtin: '01234567890123', description: 'description', category: 'COMIDAS', regularPrice: 123, promotionalPrice: 123, startDate: '10/03/2021', endDate: '10/03/2021' },
 ];
 
-const urlPromotion: string = '/promotions'
+const urlSales: string = '/sales'
 
 @Injectable({
   providedIn: 'root',
 })
-export class PromotionService {
+export class SalesService {
 
-  constructor(private http: HttpClient, private promotionAdapter: PromotionAdapter) {}
+  constructor(private http: HttpClient, private salesAdapter: SalesAdapter) {}
 
-  getAllPromotions(): Observable<Promotion[]> {
-    return this.http.get<Promotion[]>(`${urlPromotion}`).pipe(
+  getAllSales(): Observable<Sales[]> {
+    return this.http.get<Sales[]>(`${urlSales}`).pipe(
       map((data: any[]) =>
-        data.map((item) => this.promotionAdapter.adapt(item))
+        data.map((item) => this.salesAdapter.adapt(item))
       )
     );
     return of(data);
   }
 
-  addPromotion(json: any){
-    return this.http.post(`${urlPromotion}`, json)
+  addSale(json: any){
+    return this.http.post(`${urlSales}`, json)
   }
 
-  editPromotion(id: number, json: any){
-    return this.http.patch(`${urlPromotion}/${id}`, json)
+  editSale(id: number, json: any){
+    return this.http.patch(`${urlSales}/${id}`, json)
   }
 
-  deletePromotion(id: number){
-    return this.http.delete(`${urlPromotion}/${id}`)
+  deleteSale(id: number){
+    return this.http.delete(`${urlSales}/${id}`)
   }
 }

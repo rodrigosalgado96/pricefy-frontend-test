@@ -23,7 +23,7 @@
     (closeModal)="showEditForm()"
     *ngIf="editModal"
 >
-    <app-edit-form (exitForm)="showEditForm()"  [promotion]="selectedPromotion"></app-edit-form>
+    <app-edit-form (exitForm)="showEditForm()"  [sale]="selectedSales"></app-edit-form>
 </app-modal-view>
 
 <app-modal-view
@@ -32,6 +32,6 @@
     (closeModal)="showDeleteModal()"
     *ngIf="deleteModal"
 >
-    <app-delete-form (exitForm)="showDeleteModal()"  [promotion]="selectedPromotion"></app-delete-form>
+    <app-delete-form (exitForm)="showDeleteModal()"  [sale]="selectedSales"></app-delete-form>
 </app-modal-view>
 <ngx-spinner></ngx-spinner>
