@@ -1,10 +1,10 @@
 const repository = require('../repositories/sales')
 
-class Promotion {
-  add(promotion, res) {
-    return repository.add(promotion).then((results) => {
+class Sale {
+  add(sale, res) {
+    return repository.add(sale).then((results) => {
       const id = results.insertId;
-      return { ...promotion, id };
+      return { ...sale, id };
     });
   }
 
@@ -26,4 +26,4 @@ class Promotion {
   }
 }
 
-module.exports = new Promotion();
+module.exports = new Sale();

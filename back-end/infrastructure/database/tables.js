@@ -1,12 +1,12 @@
 class Tables {
   initi(connection) {
     this.connection = connection;
-    this.createPromotions();
+    this.createSales();
   }
 
-  createPromotions() {
+  createSales() {
     const sql =
-      "CREATE TABLE IF NOT EXISTS sales (id SMALLINT NOT NULL AUTO_INCREMENT, gtin CHAR(14) NOT NULL," +
+           "CREATE TABLE IF NOT EXISTS sales (id SMALLINT NOT NULL AUTO_INCREMENT, gtin CHAR(14) NOT NULL," +
       "description TEXT NOT NULL, category VARCHAR(255) NOT NULL, regularPrice VARCHAR(255) NOT NULL," +
       "promotionalPrice VARCHAR(255) NOT NULL, startDate VARCHAR(255) NOT NULL, endDate VARCHAR(255) NOT NULL," +
       "PRIMARY KEY(id))";
