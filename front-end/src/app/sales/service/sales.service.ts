@@ -16,7 +16,7 @@ const data: Sales[] = [
   { id: 9, gtin: '01234567890123', description: 'description', category: 'COMIDAS', regularPrice: 123, promotionalPrice: 123, startDate: '10/03/2021', endDate: '10/03/2021' },
 ];
 
-const urlSales: string = '/sales'
+const urlSales: string = 'api/sales'
 
 @Injectable({
   providedIn: 'root',
