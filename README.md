@@ -48,8 +48,3 @@ Inside the folder front-end, you must use the command "npm start"
 
 ## 4. Open my solution
 Go to your browser and type localhost:4200
-
-
-### Noticed Bugs
-  *When we add/edit/delete a SALE, the table doesn't update automatically as it should, you must reload the page to see the updated data
-
