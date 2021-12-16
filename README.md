@@ -6,10 +6,10 @@ Create an aplication to manange promotions with: CRUD, API and DB;
 ## Components
 
 ### Front-end > Promotions
-- A complete CRUD about a store's promotions
+- A complete CRUD about a store's sales promotions
 
 ### Back-end > RESTful API
-- An API with all necessary methods to organize our promotions
+- An API with all necessary methods to organize our sales
 
 ### Data Base > MySQL
 - Used to store and manange all data related to the project
@@ -25,4 +25,31 @@ Create an aplication to manange promotions with: CRUD, API and DB;
 - Moments Js
 - MySQL
 
+## Instructions
+
+# 1. Setup DataBase
+
+You must folow this setup inside MySQL
+    "host": "127.0.0.2",
+    "port": 3306,
+    "user": "root",
+    "password": "@admin123",
+    "database": "pricefy-test"
+    
+And create and Schema "pricefy-test".
+    
+Or change the file bakcn-end/login.js, using your setup.
+    
+# 2. Run back-end
+Inside the folder back-end, you must use the command "npm start"
+
+# 3. Run front-end
+Inside the folder front-end, you must use the command "npm start"
+
+# 4. Open my solution
+Go to your browser and type localhost:4200
+
+
+## Noticed Bugs
+  *When we add/edit/delete a SALE, the table doesn't update automatically as it should, you must reload the page to see the updated data
 
