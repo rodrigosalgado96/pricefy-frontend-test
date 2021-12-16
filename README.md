@@ -25,9 +25,9 @@ Create an aplication to manange promotions with: CRUD, API and DB;
 - Moments Js
 - MySQL
 
-## Instructions
+# Instructions
 
-# 1. Setup DataBase
+## 1. Setup DataBase
 
 You must folow this setup inside MySQL
     "host": "127.0.0.2",
@@ -40,16 +40,16 @@ And create and Schema "pricefy-test".
     
 Or change the file bakcn-end/login.js, using your setup.
     
-# 2. Run back-end
+## 2. Back-end
 Inside the folder back-end, you must use the command "npm start"
 
-# 3. Run front-end
+## 3. Front-end
 Inside the folder front-end, you must use the command "npm start"
 
-# 4. Open my solution
+## 4. Open my solution
 Go to your browser and type localhost:4200
 
 
-## Noticed Bugs
+### Noticed Bugs
   *When we add/edit/delete a SALE, the table doesn't update automatically as it should, you must reload the page to see the updated data
 
