@@ -41,15 +41,15 @@ And create and Schema "pricefy-test".
 Or change the file bakcn-end/login.js, using your setup.
     
 # 2. Run back-end
-Inside the folder bakc-end, you must use the command "npm start"
+Inside the folder back-end, you must use the command "npm start"
 
 # 3. Run front-end
 Inside the folder front-end, you must use the command "npm start"
 
 # 4. Open my solution
-Go to your browser and go to localhost:4200
+Go to your browser and type localhost:4200
 
 
 ## Noticed Bugs
-  *Whe we add/edit/delete a SALE, the table doesn't update automatically as it should, you must reload the page to see the updated data
+  *When we add/edit/delete a SALE, the table doesn't update automatically as it should, you must reload the page to see the updated data
 
