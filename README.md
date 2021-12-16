@@ -6,10 +6,10 @@ Create an aplication to manange promotions with: CRUD, API and DB;
 ## Components
 
 ### Front-end > Promotions
-- A complete CRUD about a store's promotions
+- A complete CRUD about a store's sales promotions
 
 ### Back-end > RESTful API
-- An API with all necessary methods to organize our promotions
+- An API with all necessary methods to organize our sales
 
 ### Data Base > MySQL
 - Used to store and manange all data related to the project
